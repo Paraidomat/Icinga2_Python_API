@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
   name = 'icinga2',
-  packages = ['icinga2'], # this must be the same as the name above
+  packages = ['icinga2', 'icinga2.lib'],
   version = '0.3',
   description = 'An enhanced API to communicate with Icinga2',
   author = 'Kevin Honka',
