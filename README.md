@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/KevinHonka/Icinga2_Python_API.svg?branch=master)](https://travis-ci.org/KevinHonka/Icinga2_Python_API) [![PyPI version](https://badge.fury.io/py/icinga2.svg)](https://badge.fury.io/py/icinga2)
-
-[Sonarcloud](https://sonarcloud.io/dashboard?id=Icinga2API)
+**This is my fork of KevinHonka's Project**
 
 # Icinga2_Python_API
 
