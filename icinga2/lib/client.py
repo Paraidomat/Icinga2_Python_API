@@ -51,7 +51,7 @@ class Icinga2APIClient(object):
 
         try:
             ret = self.connection.delete(self.baseurl + url, verify=False)
-            if ret.raise_for_status():
+            if ret.status_code is not "200":
                 print(json.dumps(ret.json()))
                 ret.raise_for_status()
             return json.loads(ret.text)
