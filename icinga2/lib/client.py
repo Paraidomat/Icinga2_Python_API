@@ -50,7 +50,7 @@ class Icinga2APIClient(object):
         """ Delete Data from icinga2 """
 
         try:
-            ret = self.connection.get(self.baseurl + url, verify=False)
+            ret = self.connection.delete(self.baseurl + url, verify=False)
             ret.raise_for_status()
             return json.loads(ret.text)
         except Exception as e:
