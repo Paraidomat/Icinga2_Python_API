@@ -21,7 +21,7 @@ class Hosts():
 
         self.log = logging.getLogger('Icinga2API.host')
 
-        self.filter = 'host'
+        self.filter = 'hosts'
 
     def add(self, data=None):
         """

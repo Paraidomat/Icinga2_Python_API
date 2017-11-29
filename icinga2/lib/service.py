@@ -24,7 +24,7 @@ class Service():
 
         self.log = logging.getLogger('Icinga2API.service')
 
-        self.filter = 'service'
+        self.filter = 'services'
 
     def add(self, servicename, hostname, servicedata=None):
         """

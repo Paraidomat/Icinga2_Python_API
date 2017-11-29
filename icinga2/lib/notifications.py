@@ -11,6 +11,8 @@ class Notifications():
         if config:
             self.config = config
 
+        self.filter = "notifications"
+
     def enable_for_host(self, arg):
         """ To be filled """
         pass

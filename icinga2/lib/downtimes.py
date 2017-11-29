@@ -16,6 +16,8 @@ class Downtimes():
         if config:
             self.config = config
 
+        self.filter = "downtimes"
+
     def add(self, userdata=None):
         """
         To be filled
