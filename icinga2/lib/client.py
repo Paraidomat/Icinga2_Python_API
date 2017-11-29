@@ -51,7 +51,7 @@ class Icinga2APIClient(object):
 
         try:
             ret = self.connection.delete(self.baseurl + url, verify=False)
-            if ret.status_code is not "200":
+            if not (200 <= ret.status_code <= 299):
                 print(json.dumps(ret.json()["results"], indent=2))
                 ret.raise_for_status()
             return json.loads(ret.text)
@@ -71,8 +71,9 @@ class Icinga2APIClient(object):
                 self.baseurl + url,
                 data=json.dumps(data),
                 verify=False)
-            self.log.debug(ret.text)
-            ret.raise_for_status()
+            if not (200 <= ret.status_code <= 299):
+                print(json.dumps(ret.json()["results"], indent=2))
+                ret.raise_for_status()
             return json.loads(ret.text)
         except Exception as e:
             self.log.error(e)
@@ -90,7 +91,9 @@ class Icinga2APIClient(object):
                 headers={'X-HTTP-Method-Override': 'GET'},
                 data=json.dumps(data),
                 verify=False)
-            ret.raise_for_status()
+            if not (200 <= ret.status_code <= 299):
+                print(json.dumps(ret.json()["results"], indent=2))
+                ret.raise_for_status()
             return json.loads(ret.text)
         except Exception as e:
             self.log.error(e)
