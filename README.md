@@ -7,9 +7,9 @@ An enhanced Python API  to communicate with Icinga2
 To use it simply import the package like this:
 
 ```python
-import icinga2_api
+import icinga2
 
-icinga2api = icinga2_api.Icinga2API(username = "example", password = "examplepw", url = "http://exampleicinga.de", debug = False)
+api = icinga2.Icinga2API(username = "example", password = "examplepw", url = "http://exampleicinga.de", debug = False)
 ```
 
 These parameter do the following:
