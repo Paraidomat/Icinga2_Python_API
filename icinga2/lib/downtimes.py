@@ -1,7 +1,9 @@
 from . import client
-class Downtime():
-    """
-    Class that contains all informations about downtimes and corresponding funtions
+
+
+class Downtimes():
+    """ Class that contains all informations about downtimes and
+    corresponding funtions
     """
 
     def __init__(self, config=None, client=None):
