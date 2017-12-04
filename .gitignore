@@ -63,3 +63,6 @@ target/
 .scannerwork
 
 \.idea/
+
+# VIM swaps
+*.swp
