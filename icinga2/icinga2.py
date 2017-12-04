@@ -5,7 +5,8 @@ import sys
 from pprint import pprint
 
 from icinga2.lib import client, downtimes, hosts, hostgroups, notifications
-from icinga2.lib import services, servicegroups, usergroups, users
+from icinga2.lib import services, servicegroups, usergroups, users,
+from icinga2.lib import configPackages
 
 
 class Icinga2API(object):
@@ -32,6 +33,8 @@ class Icinga2API(object):
         self.servicegroups = servicegroups.Servicegroups(client=self.client)
         self.usergroups = usergroups.Usergroups(client=self.client)
         self.users = users.Users(client=self.client)
+        self.config_packages = \
+            configPackages.ConfigPackages(client=self.client)
 
 
 if __name__ == '__main__':

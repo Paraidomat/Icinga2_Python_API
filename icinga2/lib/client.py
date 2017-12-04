@@ -16,7 +16,10 @@ class Icinga2APIClient(object):
         "downtimes": "/v1/objects/downtimes",
         "users": "/v1/objects/users",
         "usergroups": "/v1/objects/usergroups",
-        "dependencies": "/v1/objects/dependencies"
+        "dependencies": "/v1/objects/dependencies",
+        "configPackages": "/v1/config/packages",
+        "configStages": "/v1/config/stages",
+        "configStagesFiles": "/v1/config/files",
     }
 
     def __init__(self):

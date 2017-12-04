@@ -1,8 +1,8 @@
 from pprint import pformat
 import logging
 class Hosts():
-    """
-    Class that contains all informations about Hosts and corresponding funtions
+    """ Class that contains all informations about Hosts and corresponding
+    funtions
     """
 
     HOST_STATUS = {
@@ -12,9 +12,7 @@ class Hosts():
     }
 
     def __init__(self, config=None, client=None):
-        """
-        Initialize the Object with a given set of configurations.
-        """
+        """ Initialize the Object with a given set of configurations. """
         self.client = client
         if config:
             self.config = config
@@ -24,8 +22,7 @@ class Hosts():
         self.filter = 'hosts'
 
     def add(self, data=None):
-        """
-        Adding a Host with a given set of Attributes and/or Templates
+        """ Adding a Host with a given set of Attributes and/or Templates
 
         :param data: Provides the needed variables to create a host.
         Example:
@@ -60,8 +57,7 @@ class Hosts():
 
 
     def delete(self, name=None, cascade=False):
-        """
-        Delte a Host based on the hostname
+        """ Delte a Host based on the hostname
 
         :param name: Hostname of the Host that is to be deleted
         """
@@ -75,12 +71,12 @@ class Hosts():
             return self.client.delete_Data(url)
 
     def list(self, name=None):
-        """
-        Method to list all hosts or only a select one
+        """ Method to list all hosts or only a select one
         Returns a list of all Hosts
 
         :param name: can be used to only list one Host, if not set it will retrieve all Hosts
         """
+
         if name is not None:
             host_filter = {
                 "attrs": ["name"],
@@ -105,10 +101,8 @@ class Hosts():
         self.log.debug("Finished list of all matches: {}".format(pformat(return_list)))
         return return_list
 
-
     def exists(self, name=None):
-        """
-        Method to check if a single host exists
+        """ Method to check if a single host exists
 
         :param name: Is needed to check if the Host exists, will throw a Value Exception when not set
         """
@@ -123,8 +117,7 @@ class Hosts():
             raise ValueError("Hostname was not set")
 
     def objects(self, attrs=None, _filter=None, joins=None):
-        """
-        returns host objects that fit the filter and joins
+        """ returns host objects that fit the filter and joins
 
         :attrs List: List of Attributes that are returned
         :_filter List: List of filters to be applied
@@ -171,8 +164,8 @@ class Hosts():
         return result['results']
 
     def problem_count(self):
-        """
-        Return the count of hosts with problems that are neither acknowledged or have a downtime
+        """ Return the count of hosts with problems that are neither
+        acknowledged or have a downtime
         """
         count = 0
 
@@ -186,9 +179,7 @@ class Hosts():
         return count
 
     def problem_list(self):
-        """
-        Lists all Hosts and their severity count in a sorted order
-        """
+        """ Lists all Hosts and their severity count in a sorted order """
 
         host_problems = {}
 
@@ -206,9 +197,7 @@ class Hosts():
             return {}
 
     def severity(self, attrs):
-        """
-        Calculate the severity
-        """
+        """ Calculate the severity """
 
         def last_check(last_check_time):
             from datetime import datetime, timedelta
