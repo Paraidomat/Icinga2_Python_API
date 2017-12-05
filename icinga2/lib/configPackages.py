@@ -29,7 +29,7 @@ class ConfigPackages():
 
         self.log.debug('Adding Config Package with name: {}'.format(name))
         return self.client.post_Data(self.client.URLCHOICES[self.filter]
-                                     + '/' + name)
+                                     + '/' + name, "")
 
     def list(self, name=None):
         """ Get all or one specific config package """
