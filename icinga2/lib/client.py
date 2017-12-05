@@ -77,9 +77,9 @@ class Icinga2APIClient(object):
                 data=json.dumps(data),
                 verify=False)
             if not (200 <= ret.status_code <= 299):
-                if ret.json()['results']:
+                try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
-                else:
+                except KeyError:
                     logging.error(json.dumps(ret.json(), indent=2))
                 ret.raise_for_status()
             return json.loads(ret.text)
@@ -100,9 +100,9 @@ class Icinga2APIClient(object):
                 data=json.dumps(data),
                 verify=False)
             if not (200 <= ret.status_code <= 299):
-                if ret.json()["results"]:
+                try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
-                else:
+                except KeyError:
                     logging.error(json.dumps(ret.json(), indent=2))
                 ret.raise_for_status()
             return json.loads(ret.text)
