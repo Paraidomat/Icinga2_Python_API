@@ -1,4 +1,5 @@
 from . import client
+import logging
 
 class ConfigPackages():
     """ Class that contains all informations about downtimes and
