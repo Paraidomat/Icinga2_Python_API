@@ -5,7 +5,7 @@ import sys
 from pprint import pprint
 
 from icinga2.lib import client, downtimes, hosts, hostgroups, notifications
-from icinga2.lib import services, servicegroups, usergroups, users,
+from icinga2.lib import services, servicegroups, usergroups, users
 from icinga2.lib import configPackages
 
 
