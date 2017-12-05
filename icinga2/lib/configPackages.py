@@ -22,7 +22,7 @@ class ConfigPackages():
 
         # Package names starting with underscore are reserved for internal
         # usage and they may not be added via the API
-        if name[0] = '_':
+        if name[0] == '_':
             self.log.error('Package name {} starts with a _.'.format(name))
             raise ValueError('Package name {} starts with a _.'.format(name))
 
