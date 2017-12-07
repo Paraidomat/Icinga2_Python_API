@@ -36,7 +36,8 @@ class ConfigPackages():
 
         self.log.debug('Get all Config Packages')
 
-        config_packages = self.client.get(self.client.URLCHOICES[self.filter])
+        config_packages = self.client.get_Data(
+            self.client.URLCHOICES[self.filter])
         config_packages = config_packages['results']
 
         if name:
