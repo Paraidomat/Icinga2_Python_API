@@ -1,6 +1,6 @@
 from . import client
 
-class ConfigPackages():
+class ConfigStageFiles():
     """ Class that contains all informations about downtimes and
     corresponding funtions
     """
@@ -15,20 +15,10 @@ class ConfigPackages():
 
         self.log = logging.getLogger('Icinga2API.configPackages')
 
-        self.filter = "configPackages"
+        self.filter = "configStageFiles"
 
     def add(self, name=None):
         """ Add a Config Package with a specific name. """
-
-        # Package names starting with underscore are reserved for internal
-        # usage and they may not be added via the API
-        if name[0] = '_':
-            self.log.error('Package name {} starts with a _.'.format(name))
-            raise ValueError('Package name {} starts with a _.'.format(name))
-
-        self.log.debug('Adding Config Package with name: {}'.format(name))
-        return self.client.post_Data(self.client.URLCHOICES[self.filter]
-                                     + '/' + name)
 
     def list(self, name=None):
         """ Get all or one specific config package """

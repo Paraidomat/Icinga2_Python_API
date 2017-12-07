@@ -43,6 +43,7 @@ class Icinga2APIClient(object):
 
         try:
             ret = self.connection.get(self.baseurl + url, verify=False)
+            self.log.debug('Got return data: {}'.format(json.dumps(ret.json)))
             if not (200 <= ret.status_code <= 299):
                 logging.error(json.dumps(ret.json()["results"], indent=2))
                 ret.raise_for_status()
@@ -59,6 +60,7 @@ class Icinga2APIClient(object):
             if not (200 <= ret.status_code <= 299):
                 logging.error(json.dumps(ret.json()["results"], indent=2))
                 ret.raise_for_status()
+            self.log.debug('Got return data: {}'.format(json.dumps(ret.json)))
             return json.loads(ret.text)
         except Exception as e:
             self.log.error(e)
@@ -76,6 +78,7 @@ class Icinga2APIClient(object):
                 self.baseurl + url,
                 data=json.dumps(data),
                 verify=False)
+            self.log.debug('Got return data: {}'.format(json.dumps(ret.json)))
             if not (200 <= ret.status_code <= 299):
                 try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
@@ -103,6 +106,7 @@ class Icinga2APIClient(object):
                 headers=headers,
                 data=json.dumps(data),
                 verify=False)
+            self.log.debug('Got return data: {}'.format(json.dumps(ret.json)))
             if not (200 <= ret.status_code <= 299):
                 try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
