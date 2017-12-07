@@ -87,16 +87,20 @@ class Icinga2APIClient(object):
             self.log.error(e)
             raise
 
-    def post_Data(self, url, data):
+    def post_Data(self, url, data, override=True):
         """ POST method
 
         :param type: type of uri to attach to url
         :param data: Data Dictionary that is used to query the Icinga2API
         """
         try:
+            if override:
+                headers = {'X-HTTP-Method-Override': 'GET'}
+            else:
+                headers = None
             ret = self.connection.post(
                 self.baseurl + url,
-                headers={'X-HTTP-Method-Override': 'GET'},
+                headers=headers,
                 data=json.dumps(data),
                 verify=False)
             if not (200 <= ret.status_code <= 299):
