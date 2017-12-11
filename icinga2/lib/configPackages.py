@@ -14,7 +14,7 @@ class ConfigPackages():
         if config:
             self.config = config
 
-        self.log = logging.getLogger(__class__.__name__)
+        self.log = logging.getLogger('{}'.format(__class__.__name__))
 
         self.filter = "configPackages"
 
