@@ -2,7 +2,9 @@ from . import client
 import logging
 
 class ConfigWrapper():
-    """ Class wraps around the configPackages, configStages and
+    """ Class wraps around config* modules
+
+    the configPackages, configStages and
     ConfigStagesFiles, so that the end user doesn't have to worry about those.
     """
 

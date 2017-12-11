@@ -15,7 +15,8 @@ class Icinga2API(object):
 
     def __init__(self, username=None, password=None, url=None, debug=False):
         """ Initialize all needed Classes """
-        self.log = logging.getLogger('Icinga2API')
+        self.log = logging.getLogger(__class__.__name__)
+        self.log.debug("initialized.")
         streamhandler = logging.StreamHandler(sys.stdout)
         formatter = logging.Formatter(logging.BASIC_FORMAT)
         streamhandler.setFormatter(formatter)
