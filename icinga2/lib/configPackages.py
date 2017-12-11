@@ -14,8 +14,9 @@ class ConfigPackages():
         if config:
             self.config = config
 
-        self.log = logging.getLogger('Icinga2API.ConfigPackages')
-        print(__class__.__name__)
+        #self.log = logging.getLogger('Icinga2API.ConfigPackages')
+        self.log = logging.getLogger(
+            'Icinga2API.{}'.format(__class__.__name__))
 
         self.filter = "configPackages"
 
