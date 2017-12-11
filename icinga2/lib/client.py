@@ -4,7 +4,7 @@ import logging
 import json
 
 
-class Icinga2APIClient(object):
+class Client(object):
     """ Main Class to implement the Icinga2 API Client """
 
     URLCHOICES = {

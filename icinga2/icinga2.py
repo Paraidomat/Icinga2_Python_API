@@ -25,7 +25,7 @@ class Icinga2API(object):
         if debug:
             self.log.setLevel(logging.DEBUG)
 
-        self.client = client.Icinga2APIClient()
+        self.client = client.Client()
         self.client.setconfig(username, password, url)
         self.downtimes = downtimes.Downtimes(client=self.client)
         self.hosts = hosts.Hosts(client=self.client)
@@ -47,6 +47,7 @@ class Icinga2API(object):
 
         self.config_wrapper = \
             configWrapper.ConfigWrapper(client=self.client)
+
 
 
 if __name__ == '__main__':
