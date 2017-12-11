@@ -1,6 +1,6 @@
 from . import client
 
-class ConfigStageFiles():
+class ConfigStagesFiles():
     """ Class that contains all informations about downtimes and
     corresponding funtions
     """
@@ -15,7 +15,7 @@ class ConfigStageFiles():
 
         self.log = logging.getLogger('Icinga2API.configPackages')
 
-        self.filter = "configStageFiles"
+        self.filter = "configStagesFiles"
 
     def add(self, name=None):
         """ Add a Config Package with a specific name. """
