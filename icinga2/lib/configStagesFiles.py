@@ -1,5 +1,7 @@
 from . import client
 
+import logging
+
 class ConfigStagesFiles():
     """ Class that contains all informations about downtimes and
     corresponding funtions
