@@ -25,7 +25,8 @@ class Icinga2APIClient(object):
     def __init__(self):
         """ Initialize all needed Variables """
 
-        self.log = logging.getLogger('Icinga2API.client')
+        self.log = logging.getLogger(
+            'Icinga2API.{}'.format(__class__.__name__))
         self.connection = Session()
         self.connection.headers.update({'Accept': 'application/json'})
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
