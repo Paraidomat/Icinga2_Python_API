@@ -1,6 +1,5 @@
 from . import client
 
-import json
 import logging
 
 class ConfigStagesFiles():
@@ -36,8 +35,7 @@ class ConfigStagesFiles():
                        config_package_name: {},
                        configuration_data: {},
                        restart: {}'''.format(config_package_name,
-                                             json.dumps(configuration_data,
-                                                        indent=2),
+                                             configuration_data,
                                              restart))
 
         if not config_package_name:
