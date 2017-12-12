@@ -112,7 +112,7 @@ class Client(object):
                            data: {}\
                            verify: {}'.format(self.baseurl + url, headers,
                                               json.dumps(data, indent=2),
-                                              verify)
+                                              verify))
             ret = self.connection.post(
                 self.baseurl + url,
                 headers=headers,
