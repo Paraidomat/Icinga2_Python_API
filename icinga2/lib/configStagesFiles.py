@@ -1,5 +1,6 @@
 from . import client
 
+import json
 import logging
 
 class ConfigStagesFiles():
