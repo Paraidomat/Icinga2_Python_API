@@ -42,12 +42,12 @@ class ConfigStagesFiles():
 
         try:
             data = {
-                'reload' = restart,
-                'files' = configuration_data['files']
+                'reload': restart,
+                'files': configuration_data['files']
             }
         except KeyError:
             err = 'configuration_data must have key "files"
-            self.log.error
+            self.log.error(err)
 
         self.log.debug('Adding configuration stage to Configuration Package')
         return self.client.post_Data(self.client.URLCHOICES[self.filter]
