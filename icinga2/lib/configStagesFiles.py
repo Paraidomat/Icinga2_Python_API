@@ -55,11 +55,12 @@ class ConfigStagesFiles():
         except KeyError:
             err = 'configuration_data must have key "files"'
             self.log.error(err)
+            raise KeyError(err)
 
         self.log.debug('Adding configuration stage to Configuration Package')
         return self.client.post_Data(self.client.URLCHOICES[self.filter]
                                          + '/' + config_package_name,
-                                     configuration, False)
+                                     data, False)
 
 
     def list(self, config_package_name=None, config_stage_name=None):
