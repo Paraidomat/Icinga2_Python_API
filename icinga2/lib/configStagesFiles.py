@@ -15,34 +15,77 @@ class ConfigStagesFiles():
         if config:
             self.config = config
 
-        self.log = logging.getLogger('Icinga2API.configPackages')
+        self.log = logging.getLogger(
+            'Icinga2API.{}'.format(__class__.__name__))
 
         self.filter = "configStagesFiles"
 
-    def add(self, name=None):
-        """ Add a Config Package with a specific name. """
+    def add(self, config_package_name=None, configuration_data=None,
+            restart=False):
+        """ Add a Configuration Stage to a Config Package.
 
-    def list(self, name=None):
-        """ Get all or one specific config package """
+        configuration_data = {
+            'files': {
+                'filename_a': 'configuration_a',
+                'filename_b': 'configuration_b'
+            }
+        }"""
 
-        self.log.debug('Get all Config Packages')
+        if not config_package_name:
+            err = 'config_package_name not specified'
+            self.log.error(err)
+            raise ValueError(err)
+        if not configuration:
+            err = 'configuration not specified'
+            self.log.error(err)
+            raise ValueError(err)
 
-        config_packages = self.client.get(self.client.URLCHOICES[self.filter])
-        config_packages = config_packages['results']
+        try:
+            data = {
+                'reload' = restart,
+                'files' = configuration_data['files']
+            }
+        except KeyError:
+            err = 'configuration_data must have key "files"
+            self.log.error
 
-        if name:
-            config_packages = [cp for cp in config_packages
-                               if cp['name'] == name]
+        self.log.debug('Adding configuration stage to Configuration Package')
+        return self.client.post_Data(self.client.URLCHOICES[self.filter]
+                                         + '/' + config_package_name,
+                                     configuration, False)
 
-        return config_packages
 
-    def delete(self, name=None):
-        """ Delete a Config Package based on it's name """
+    def list(self, config_package_name=None, config_stage_name=None):
+        """ Get Information about all or one specific configuration stage. """
 
-        if not name:
-            self.log.error('name not set!')
-            raise ValueError('name not set!')
+        if not config_package_name:
+            err = 'config_package_name not specified.'
+            self.log.error(err)
+            raise ValueError(err)
+        if not config_stage_name:
+            err = 'config_stage_name not specified.'
+            self.log.error(err)
+            raise ValueError(err)
 
-        self.log.debug('Deleting config package with name: {}'.format(name))
-        return self.client.delete_Data(self.client.URLCHOICES[self.filter]
-                                       + '/' + name)
+        self.log.debug('Get Information about config stage')
+        url = (self.client.URLCHOICES['configStages']
+               + '/' + config_package_name
+               + '/' + config_stage_name)
+        return self.client.get_Data(url)
+
+
+    def delete(self, config_package_name=None, config_stage_name=None):
+        """ Delete a Config Stage based on it's name """
+
+        if not config_package_name:
+            err = 'config_package_name not specified.'
+            self.log.error(err)
+            raise ValueError(err)
+        if not config_stage_name:
+            err = 'config_stage_name not specified.'
+            self.log.error(err)
+            raise ValueError(err)
+
+        return self.client.delete_Data(self.client.URLCHOICES['configStage']
+                                       + '/' + config_package_name
+                                       + '/' + config_stage_name)
