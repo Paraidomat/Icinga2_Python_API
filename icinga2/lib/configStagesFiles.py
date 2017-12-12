@@ -31,6 +31,14 @@ class ConfigStagesFiles():
             }
         }"""
 
+        self.log.debug('''Add-method got values:
+                       config_package_name: {},
+                       configuration_data: {},
+                       restart: {}'''.format(config_package_name,
+                                             json.dumps(configuration_data,
+                                                        indent=2),
+                                             restart))
+
         if not config_package_name:
             err = 'config_package_name not specified'
             self.log.error(err)
@@ -46,7 +54,7 @@ class ConfigStagesFiles():
                 'files': configuration_data['files']
             }
         except KeyError:
-            err = 'configuration_data must have key "files"
+            err = 'configuration_data must have key "files"'
             self.log.error(err)
 
         self.log.debug('Adding configuration stage to Configuration Package')
