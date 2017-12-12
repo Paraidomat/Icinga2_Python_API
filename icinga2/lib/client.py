@@ -109,10 +109,8 @@ class Client(object):
             self.log.debug('This is the request:\
                            url: {}\
                            headers: {}\
-                           data: {}\
-                           verify: {}'.format(self.baseurl + url, headers,
-                                              json.dumps(data, indent=2),
-                                              verify))
+                           data: {}'.format(self.baseurl + url, headers,
+                                            json.dumps(data, indent=2)))
             ret = self.connection.post(
                 self.baseurl + url,
                 headers=headers,
