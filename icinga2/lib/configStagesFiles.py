@@ -42,8 +42,8 @@ class ConfigStagesFiles():
             err = 'config_package_name not specified'
             self.log.error(err)
             raise ValueError(err)
-        if not configuration:
-            err = 'configuration not specified'
+        if not configuration_data:
+            err = 'configuration_data not specified'
             self.log.error(err)
             raise ValueError(err)
 
