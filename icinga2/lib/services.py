@@ -1,6 +1,6 @@
 from pprint import pformat
 import logging
-class Service():
+class Services():
     """
     Class that contains all informations about Services and corresponding funtions
     """
