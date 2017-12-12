@@ -58,7 +58,7 @@ class ConfigStagesFiles():
             raise KeyError(err)
 
         self.log.debug('Adding configuration stage to Configuration Package')
-        return self.client.post_Data(self.client.URLCHOICES[self.filter]
+        return self.client.post_Data(self.client.URLCHOICES['configStages']
                                          + '/' + config_package_name,
                                      data, False)
 
