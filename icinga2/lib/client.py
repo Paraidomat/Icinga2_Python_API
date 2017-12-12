@@ -111,8 +111,7 @@ class Client(object):
                 headers=headers,
                 data=json.dumps(data),
                 verify=False)
-            self.log.debug('Got return data: {}'.format(
-                ret.text())
+            self.log.debug('Got return data: {}'.format(ret.text()))
             if not (200 <= ret.status_code <= 299):
                 try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
