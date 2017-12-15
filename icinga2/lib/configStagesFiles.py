@@ -62,7 +62,6 @@ class ConfigStagesFiles():
                                          + '/' + config_package_name,
                                      data, False)
 
-
     def list(self, config_package_name=None, config_stage_name=None):
         """ Get Information about all or one specific configuration stage. """
 
@@ -80,7 +79,6 @@ class ConfigStagesFiles():
                + '/' + config_package_name
                + '/' + config_stage_name)
         return self.client.get_Data(url)
-
 
     def delete(self, config_package_name=None, config_stage_name=None):
         """ Delete a Config Stage based on it's name """
