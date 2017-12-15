@@ -44,7 +44,7 @@ class Client(object):
 
         try:
             ret = self.connection.get(self.baseurl + url, verify=False)
-            self.log.debug('Got return data: {}'.format(
+            self.log.debug('get_Data: Got return data: {}'.format(
                 json.dumps(ret.json(), indent=2)))
             if not (200 <= ret.status_code <= 299):
                 logging.error(json.dumps(ret.json()["results"], indent=2))
@@ -62,7 +62,7 @@ class Client(object):
             if not (200 <= ret.status_code <= 299):
                 logging.error(json.dumps(ret.json()["results"], indent=2))
                 ret.raise_for_status()
-            self.log.debug('Got return data: {}'.format(
+            self.log.debug('delete_Data: Got return data: {}'.format(
                 json.dumps(ret.json(), indent=2)))
             return json.loads(ret.text)
         except Exception as e:
@@ -81,7 +81,7 @@ class Client(object):
                 self.baseurl + url,
                 data=json.dumps(data),
                 verify=False)
-            self.log.debug('Got return data: {}'.format(
+            self.log.debug('put_Data: Got return data: {}'.format(
                 json.dumps(ret.json(), indent=2)))
             if not (200 <= ret.status_code <= 299):
                 try:
@@ -93,7 +93,6 @@ class Client(object):
         except Exception as e:
             self.log.error(e)
             raise
-
 
     def post_Data(self, url, data, override=True):
         """ POST method
@@ -115,7 +114,7 @@ class Client(object):
                 headers=headers,
                 data=json.dumps(data),
                 verify=False)
-            self.log.debug('Got return data: {}'.format(ret.text))
+            self.log.debug('post_Data: Got return data: {}'.format(ret.text))
             if not (200 <= ret.status_code <= 299):
                 try:
                     logging.error(json.dumps(ret.json()["results"], indent=2))
