@@ -106,7 +106,7 @@ class Client(object):
             else:
                 headers = None
             self.log.debug(
-                'This is the request: url: {} headers: {}, {},  data: {}'.format(
+                'This is the POST-request: url: {} headers: {}, {},  data: {}'.format(
                     self.baseurl + url, headers, self.connection.headers,
                     json.dumps(data, indent=2)))
             ret = self.connection.post(
