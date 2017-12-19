@@ -60,10 +60,11 @@ class ConfigPackages():
 
         packages = self.list(name=name)
 
-        if packages['name'] == name:
-            return True
-        else:
-            return False
+        for package in packages:
+            if package['name'] == name:
+                return True
+            else:
+                return False
 
     def delete(self, name=None):
         """ Delete a Config Package based on it's name """
