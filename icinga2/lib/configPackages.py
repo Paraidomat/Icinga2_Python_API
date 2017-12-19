@@ -48,6 +48,23 @@ class ConfigPackages():
 
         return config_packages
 
+    def exists(self, name=None):
+        """ Check if ConfigPackage exists """
+
+        if not name:
+            error = 'Config Package name not specified'
+            self.log.error(error)
+            raise ValueError(error)
+
+        self.log.debug('Check if ConfigPackage {} exists'.format(name))
+
+        packages = self.list(name=name)
+
+        if package['name'] == name:
+            return True
+        else:
+            return False
+
     def delete(self, name=None):
         """ Delete a Config Package based on it's name """
 
