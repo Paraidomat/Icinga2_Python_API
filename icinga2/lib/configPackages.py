@@ -60,7 +60,7 @@ class ConfigPackages():
 
         packages = self.list(name=name)
 
-        if package['name'] == name:
+        if packages['name'] == name:
             return True
         else:
             return False
