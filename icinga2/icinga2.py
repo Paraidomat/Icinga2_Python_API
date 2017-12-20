@@ -20,7 +20,9 @@ class Icinga2API(object):
         self.log.debug("initialized.")
         stream_handler = logging.StreamHandler(sys.stdout)
         file_handler = logging.FileHandler('/var/tmp/Icinga2API.log')
-        formatter = logging.Formatter(logging.BASIC_FORMAT)
+        #formatter = logging.Formatter(logging.BASIC_FORMAT)
+        format_string = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        formatter = logging.Formatter(format_string)
         stream_handler.setFormatter(formatter)
         file_handler.setFormatter(formatter)
         #self.log.addHandler(stream_handler)
