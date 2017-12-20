@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 import logging
+import logging.config
 import sys
 from pprint import pprint
 
@@ -17,10 +18,13 @@ class Icinga2API(object):
         """ Initialize all needed Classes """
         self.log = logging.getLogger(__class__.__name__)
         self.log.debug("initialized.")
-        streamhandler = logging.StreamHandler(sys.stdout)
+        stream_handler = logging.StreamHandler(sys.stdout)
+        file_handler = logging.FileHandler('/var/tmp/Icinga2API.log')
         formatter = logging.Formatter(logging.BASIC_FORMAT)
-        streamhandler.setFormatter(formatter)
-        self.log.addHandler(streamhandler)
+        stream_handler.setFormatter(formatter)
+        file_handler.setFormatter(formatter)
+        #self.log.addHandler(stream_handler)
+        self.log.addHandler(file_handler)
 
         if debug:
             self.log.setLevel(logging.DEBUG)
