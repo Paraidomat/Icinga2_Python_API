@@ -36,14 +36,12 @@ class Services():
             "templates": [ "generic-service" ],
             "attrs": {
                 "check_command": "ping4",
-                "check_interval": 10,
-                "retry_interval": 30
             }
         }
         """
 
         def validate_servicedata(servicedata):
-            NEEDED_VALUES = ("check_command", "check_interval", "retry_interval")
+            NEEDED_VALUES = ("check_command")
 
             for need in NEEDED_VALUES:
                 if not need in servicedata['attrs']:
