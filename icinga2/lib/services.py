@@ -41,7 +41,7 @@ class Services():
         """
 
         def validate_servicedata(servicedata):
-            NEEDED_VALUES = ("check_command")
+            NEEDED_VALUES = ["check_command"]
 
             for need in NEEDED_VALUES:
                 if not need in servicedata['attrs']:
