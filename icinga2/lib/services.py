@@ -53,7 +53,7 @@ class Services():
             validate_servicedata(servicedata)
 
         self.log.debug("Adding service with the following data: {}".format(pformat(servicedata)))
-        self.client.put_Data(self.client.URLCHOICES[self.filter] + hostname + "!" + servicename, servicedata)
+        self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + servicename, servicedata)
 
     def delete(self, hostname=None, servicename=None):
         """
@@ -65,7 +65,7 @@ class Services():
             raise ValueError("Hostname or Servicename not set")
         else:
             self.log.debug("Deleting Host with name: {}".format(hostname))
-            self.client.delete_Data(self.client.URLCHOICES[self.filter] + hostname + "!" + servicename)
+            self.client.delete_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + servicename)
 
     def list(self, hostname=None, servicename=None):
         """
