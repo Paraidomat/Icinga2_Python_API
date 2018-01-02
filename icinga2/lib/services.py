@@ -53,7 +53,7 @@ class Services():
             validate_servicedata(servicedata)
 
         self.log.debug("Adding service with the following data: {}".format(pformat(servicedata)))
-        self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + servicename, servicedata)
+        self.client.post_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + servicename, servicedata)
 
     def delete(self, hostname=None, servicename=None):
         """
