@@ -50,7 +50,7 @@ class Services():
         if not servicedata:
             raise ValueError("ServiceData not set")
         else:
-            validate_servicedata(hostdata)
+            validate_servicedata(servicedata)
 
         self.log.debug("Adding service with the following data: {}".format(pformat(servicedata)))
         self.client.put_Data(self.client.URLCHOICES[self.filter] + hostname + "!" + servicename, servicedata)
