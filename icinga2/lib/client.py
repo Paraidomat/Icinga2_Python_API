@@ -69,7 +69,7 @@ class Client(object):
             self.log.error(e)
             raise
 
-    def put_Data(self, url, data):
+    def put_Data(self, url, data, override=False):
         """ Put Data into Icinga2 via the API
 
         :param url: type of uri to attach to url
