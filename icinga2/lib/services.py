@@ -127,7 +127,7 @@ class Services():
         else:
             ret = self.list(servicename=servicename)
 
-        if ret:
+        if ret.status_code == 200:
             return True
         else:
             return False
