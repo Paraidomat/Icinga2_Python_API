@@ -81,14 +81,14 @@ class Services():
 
         if hostname:
             joins.append("host.name")
-            filters = "host.name == hostname"
+            filters = 'match("hostname", host.name)'
             filter_vars['hostname'] = hostname
 
         if servicename:
             if filters:
-                filters += " && service.name == servicename"
+                filters += ' && match("servicename", service.name)'
             else:
-                filters = "service.name == servicename"
+                filters = 'match("servicename", service.name)'
             filter_vars['servicename'] = servicename
 
         payload = {}
