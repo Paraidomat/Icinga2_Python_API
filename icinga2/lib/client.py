@@ -77,10 +77,20 @@ class Client(object):
         """
 
         try:
+            if override:
+                headers = {'X-HTTP-Method-Override': 'GET'}
+            else:
+                headers = None
+            self.log.debug(
+                'This is the POST-request: url: {} headers: {}, {},  data: {}'.format(
+                    self.baseurl + url, headers, self.connection.headers,
+                    json.dumps(data, indent=2)))
             ret = self.connection.put(
                 self.baseurl + url,
+                headers=headers,
                 data=json.dumps(data),
                 verify=False)
+            self.log.debug('put_Data: This is the URL sent to the server: {}'.format(ret.url))
             self.log.debug('put_Data: Got return data: {}'.format(
                 json.dumps(ret.json(), indent=2)))
             if not (200 <= ret.status_code <= 299):
