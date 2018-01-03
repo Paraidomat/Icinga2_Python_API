@@ -114,6 +114,7 @@ class Client(object):
                 headers=headers,
                 data=json.dumps(data),
                 verify=False)
+            self.log.debug('post_Data: This is the URL sent to the server: {}'.format(ret.url))
             self.log.debug('post_Data: Got return data: {}'.format(ret.text))
             if not (200 <= ret.status_code <= 299):
                 try:
