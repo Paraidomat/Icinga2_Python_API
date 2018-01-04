@@ -94,7 +94,7 @@ class Services():
 
         if custom_filter and custom_filter_vars:
             filters = custom_filter
-            for key, value in chstom_filter_vars:
+            for key, value in custom_filter_vars:
                 filter_vars[key] = value
 
         payload = {}
