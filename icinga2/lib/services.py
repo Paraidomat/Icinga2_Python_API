@@ -67,7 +67,8 @@ class Services():
             self.log.debug("Deleting Host with name: {}".format(hostname))
             self.client.delete_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + servicename)
 
-    def list(self, hostname=None, servicename=None):
+    def list(self, hostname=None, servicename=None, custom_filter=None,
+             custom_filter_vars=None):
         """
         Method to list all services or only those for a single host
 
@@ -79,17 +80,22 @@ class Services():
         filters = None
         filter_vars = {}
 
-        if hostname:
+        if hostname and not(custom_filter or custom_filter_vars):
             joins.append("host.name")
-            filters = "match('hostname', host.name)"
+            filters = "host.name == hostname"
             filter_vars['hostname'] = hostname
 
-        if servicename:
+        if servicename and not(custom_filter or custom_filter_vars):
             if filters:
                 filters += " && match('servicename', service.name)"
             else:
-                filters = "match('servicename', service.name)"
+                filters = "service.name == servicename"
             filter_vars['servicename'] = servicename
+
+        if custom_filter and custom_filter_vars:
+            filters = custom_filter
+            for key, value in chstom_filter_vars:
+                filter_vars[key] = value
 
         payload = {}
         payload['attrs'] = attrs
