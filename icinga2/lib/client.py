@@ -60,7 +60,7 @@ class Client(object):
         try:
             ret = self.connection.delete(self.baseurl + url, verify=False)
             if not (200 <= ret.status_code <= 299):
-                logging.error(json.dumps(ret.json()["results"], indent=2))
+                logging.error(json.dumps(ret.json(), indent=2))
                 ret.raise_for_status()
             self.log.debug('delete_Data: Got return data: {}'.format(
                 json.dumps(ret.json(), indent=2)))
