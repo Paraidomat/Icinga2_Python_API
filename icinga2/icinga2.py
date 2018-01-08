@@ -5,9 +5,9 @@ import logging.config
 import sys
 from pprint import pprint
 
-from icinga2.lib import client, downtimes, hosts, hostgroups, notifications
-from icinga2.lib import services, servicegroups, usergroups, users
-from icinga2.lib import configPackages, configStages, configStagesFiles
+from icinga2.lib import actions, client, downtimes, hosts, hostgroups
+from icinga2.lib import notifications, services, servicegroups, usergroups
+from icinga2.lib import users, configPackages, configStages, configStagesFiles
 from icinga2.lib import configWrapper
 
 
@@ -31,6 +31,7 @@ class Icinga2API(object):
         if debug:
             self.log.setLevel(logging.DEBUG)
 
+        self.actions = actions.Actions(client=self.client)
         self.client = client.Client()
         self.client.setconfig(username, password, url)
         self.downtimes = downtimes.Downtimes(client=self.client)
