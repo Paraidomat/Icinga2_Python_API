@@ -21,6 +21,6 @@ class Actions():
     def restart(self):
         """ Restarts the Icinga2 process """
         self.log.debug("Restarting Icinga2 process")
-        return self.client.post_data(self.client.URLCHOICES[self.filter] +
+        return self.client.post_Data(self.client.URLCHOICES[self.filter] +
                                      "/restart-process")
 
