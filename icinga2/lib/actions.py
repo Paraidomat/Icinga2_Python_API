@@ -18,9 +18,9 @@ class Actions():
 
         self.filter = 'actions'
 
-    def restart(self):
+    def restart_process(self):
         """ Restarts the Icinga2 process """
         self.log.debug("Restarting Icinga2 process")
-        return self.client.post_Data(self.client.URLCHOICES[self.filter] +
-                                     "/restart-process")
+        return self.client.post_Data(
+            self.client.URLCHOICES[self.filter]["restart-process"])
 

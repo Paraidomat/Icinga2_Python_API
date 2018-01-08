@@ -8,7 +8,9 @@ class Client(object):
     """ Main Class to implement the Icinga2 API Client """
 
     URLCHOICES = {
-        "actions": "/v1/actions/restart-process",
+        "actions": {
+            "restart-process": "/v1/actions/restart-process",
+        },
         "hosts": "/v1/objects/hosts",
         "hostgroups": "/v1/objects/hostgroups",
         "services": "/v1/objects/services",
