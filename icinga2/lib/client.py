@@ -122,11 +122,17 @@ class Client(object):
                 'This is the POST-request: url: {} headers: {}, {},  data: {}'.format(
                     self.baseurl + url, headers, self.connection.headers,
                     json.dumps(data, indent=2)))
-            ret = self.connection.post(
-                self.baseurl + url,
-                headers=headers,
-                data=json.dumps(data),
-                verify=False)
+            if data:
+                ret = self.connection.post(
+                    self.baseurl + url,
+                    headers=headers,
+                    data=json.dumps(data),
+                    verify=False)
+            else:
+                ret = self.connection.post(
+                    self.baseurl + url,
+                    headers=headers,
+                    verify=False)
             self.log.debug('post_Data: This is the URL sent to the server: {}'.format(ret.url))
             self.log.debug('post_Data: Got return data: {}'.format(ret.text))
             if not (200 <= ret.status_code <= 299):
