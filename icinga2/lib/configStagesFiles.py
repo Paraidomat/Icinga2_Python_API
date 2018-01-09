@@ -49,9 +49,10 @@ class ConfigStagesFiles():
 
         try:
             data = {
-                'reload': restart,
                 'files': configuration_data['files']
             }
+            if restart:
+                data['reload'] = restart
         except KeyError:
             err = 'configuration_data must have key "files"'
             self.log.error(err)
