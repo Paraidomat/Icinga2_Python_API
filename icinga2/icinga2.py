@@ -5,9 +5,9 @@ import logging.config
 import sys
 from pprint import pprint
 
-from icinga2.lib import actions, client, downtimes, hosts, hostgroups
-from icinga2.lib import notifications, services, servicegroups, usergroups
-from icinga2.lib import users, configPackages, configStages, configStagesFiles
+from icinga2.lib import actions, client, dependencies, downtimes, hosts
+from icinga2.lib import hostgroup, snotifications, services, servicegroups
+from icinga2.lib import usergroup, susers, configPackages, configStagesFiles
 from icinga2.lib import configWrapper
 
 
@@ -46,9 +46,6 @@ class Icinga2API(object):
 
         self.config_packages = \
             configPackages.ConfigPackages(client=self.client)
-
-        self.config_stages = \
-            configStages.ConfigStages(client=self.client)
 
         self.config_stages_files = \
             configStagesFiles.ConfigStagesFiles(client=self.client)
