@@ -7,7 +7,7 @@ from pprint import pprint
 
 from icinga2.lib import actions, client, dependencies, downtimes, hosts
 from icinga2.lib import hostgroups, notifications, services, servicegroups
-from icinga2.lib import usergroup, susers, configPackages, configStagesFiles
+from icinga2.lib import usergroups, users, configPackages, configStagesFiles
 from icinga2.lib import configWrapper
 
 
