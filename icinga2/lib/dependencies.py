@@ -23,7 +23,7 @@ class Dependencies():
                              "disable_checks"]
 
             for need in NEEDED_VALUES:
-                if not need in data['attrs']:
+                if not need in data:
                     message = "Error in data, expected {} but was not found".format(need)
                     self.log.error(message)
                     raise ValueError(message)
