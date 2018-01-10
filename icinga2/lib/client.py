@@ -17,6 +17,7 @@ class Client(object):
         "servicegroups": "/v1/objects/servicegroups",
         "notifications": "/v1/objects/notifications",
         "downtimes": "/v1/objects/downtimes",
+        "dependencies": "/v1/objects/dependencies",
         "users": "/v1/objects/users",
         "usergroups": "/v1/objects/usergroups",
         "dependencies": "/v1/objects/dependencies",
