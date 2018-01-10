@@ -35,7 +35,7 @@ class Dependencies():
         else:
             validate_data(data)
 
-        name = data['attrs'].pop("name")
+        name = data.pop("name")
 
 
         self.log.debug("Adding dependency with the following data: {}".format(pformat(data)))
