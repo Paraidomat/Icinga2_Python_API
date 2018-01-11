@@ -107,7 +107,7 @@ class Client(object):
             return json.loads(ret.text)
         except Exception as e:
             self.log.error(e)
-            self.log.debug(dump.dump_all(ret))
+            self.log.debug(print(dump.dump_all(ret)))
 
             raise
 
