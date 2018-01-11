@@ -1,4 +1,5 @@
 from requests import Session
+from requests_toolbelt.utils import dump
 import urllib3
 import logging
 import json
@@ -106,6 +107,8 @@ class Client(object):
             return json.loads(ret.text)
         except Exception as e:
             self.log.error(e)
+            self.log.debug(dump.dump_all(ret))
+
             raise
 
     def post_Data(self, url, data, override=True):
