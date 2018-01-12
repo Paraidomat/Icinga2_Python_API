@@ -38,7 +38,12 @@ class Dependencies():
             validate_data(data)
 
         self.log.debug("Adding dependency with the following data: {}".format(pformat(data)))
-        return self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + dependencyname, data)
+        url = '{}/{}!{}!{}'.format(
+            self.client.URLCHOICES[self.filter],
+            hostname,
+            urllib.parse.quote(data['child_service_name'], safe='§'),
+            dependencyname)
+        return self.client.put_Data(url, data)
 
 
     def delete(self, name=None, cascade=False):
