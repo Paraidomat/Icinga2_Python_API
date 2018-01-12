@@ -1,4 +1,5 @@
 from pprint import pformat
+import urllib.parse
 import logging
 class Dependencies():
     """ Class that contains all informations about Hosts and corresponding
@@ -16,9 +17,9 @@ class Dependencies():
 
         self.filter = 'dependencies'
 
-    def add(self, data=None):
+    def add(self, dependencyname=None, hostname=None, data=None):
         def validate_data(data):
-            NEEDED_VALUES = ["name", "parent_host_name", "parent_service_name",
+            NEEDED_VALUES = ["parent_host_name", "parent_service_name",
                              "child_host_name", "child_service_name",
                              "disable_checks"]
 
@@ -27,6 +28,7 @@ class Dependencies():
                     message = "Error in data, expected {} but was not found".format(need)
                     self.log.error(message)
                     raise ValueError(message)
+        data['child_host_name'] = hostname
 
         if not data:
             message = "data not set"
@@ -37,9 +39,8 @@ class Dependencies():
 
         name = data.pop("name")
 
-
         self.log.debug("Adding dependency with the following data: {}".format(pformat(data)))
-        return self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + name, data)
+        return self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + dependencyname, data)
 
 
     def delete(self, name=None, cascade=False):
