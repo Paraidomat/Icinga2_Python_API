@@ -37,8 +37,6 @@ class Dependencies():
         else:
             validate_data(data)
 
-        name = data.pop("name")
-
         self.log.debug("Adding dependency with the following data: {}".format(pformat(data)))
         return self.client.put_Data(self.client.URLCHOICES[self.filter] + "/" + hostname + "!" + dependencyname, data)
 
