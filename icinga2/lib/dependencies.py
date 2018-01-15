@@ -24,12 +24,12 @@ class Dependencies():
                              "disable_checks"]
 
             for need in NEEDED_VALUES:
-                if not need in data:
+                if not need in data['attrs']:
                     message = "Error in data, expected {} but was not found".format(need)
                     self.log.error(message)
                     raise ValueError(message)
-        data['child_host_name'] = hostname
 
+        data['attrs']['child_host_name'] = hostname
         if not data:
             message = "data not set"
             self.log.error(message)
