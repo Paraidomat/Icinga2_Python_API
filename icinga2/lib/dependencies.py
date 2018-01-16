@@ -19,9 +19,7 @@ class Dependencies():
 
     def add(self, dependencyname=None, hostname=None, data=None):
         def validate_data(data):
-            NEEDED_VALUES = ["parent_host_name", "parent_service_name",
-                             "child_host_name", "child_service_name",
-                             "disable_checks"]
+            NEEDED_VALUES = ["parent_host_name", "child_host_name"]
 
             for need in NEEDED_VALUES:
                 if not need in data['attrs']:
