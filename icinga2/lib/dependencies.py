@@ -41,7 +41,7 @@ class Dependencies():
         url = '{}/{}!{}!{}'.format(
             self.client.URLCHOICES[self.filter],
             hostname,
-            urllib.parse.quote(data['child_service_name'], safe='§'),
+            urllib.parse.quote(data['attrs']['child_service_name'], safe='§'),
             dependencyname)
         return self.client.put_Data(url, data)
 
