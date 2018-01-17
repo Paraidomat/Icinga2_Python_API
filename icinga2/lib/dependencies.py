@@ -76,9 +76,8 @@ class Dependencies():
             }
         else:
             if custom_filter and custom_filter_vars:
-                filters=custom_filter,
-                for key, value in custom_filter_vars:
-                    filter_vars[key] = value
+                filters = custom_filter,
+                filter_vars = custom_filter_vars
             else:
                 dependency_filter = {"attrs": ["name"]}
 
@@ -94,7 +93,7 @@ class Dependencies():
         return return_list
 
 
-    def exists(self, name=None):
+    def exists(self, name=Nonei, custom_filter=None, custom_filter_vars=None):
         """
         Method to check if a single Dependency exists
 
@@ -107,5 +106,12 @@ class Dependencies():
                 return False
             else:
                 return True
+        elif custom_filter and custom_filter_vars:
+            ret = self.list(custom_filter=custom_filter,
+                            custom_filter_vars=custom_filter_vars)
+            if len(ret) > 0:
+                return True
+            else:
+                return False
         else:
-            raise ValueError("Dependencyname was not set")
+            raise ValueError("Dependencyname or custom_filter(_vars) was not set")
