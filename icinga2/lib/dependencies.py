@@ -80,6 +80,8 @@ class Dependencies():
                     "attrs": ["name"],
                     "filter": custom_filter,
                     "filter_vars": custom_filter_vars}
+            else:
+                dependency_filter = {"attrs": ["name"]}
 
         self.log.debug("Listing all Dependencies that match: {}".format(pformat(dependency_filter)))
         ret = self.client.post_Data(self.client.URLCHOICES[self.filter], dependency_filter)
