@@ -77,7 +77,7 @@ class Dependencies():
         else:
             if custom_filter and custom_filter_vars:
                 dependency_filter = {
-                    "filters": custom_filter,
+                    "filter": custom_filter,
                     "filter_vars": custom_filter_vars}
             else:
                 dependency_filter = {"attrs": ["name"]}
