@@ -123,15 +123,19 @@ class Services():
 
         return self.unhandled
 
-    def exists(self, servicename, hostname=None):
+    def exists(self, servicename, hostname=None, custom_filter=None,
+               custom_filter_vars=None):
         """
         Experimental
         """
-
-        if hostname:
-            ret = self.list(servicename=servicename, hostname=hostname)
+        if not custom_filter and custom_filter_vars:
+            if hostname:
+                ret = self.list(servicename=servicename, hostname=hostname)
+            else:
+                ret = self.list(servicename=servicename)
         else:
-            ret = self.list(servicename=servicename)
+            ret = self.list(custom_filter=custom_filter,
+                            custom_filter_vars=custom_filter_vars)
 
         if ret.status_code == 200:
             return True
