@@ -93,7 +93,7 @@ class Dependencies():
         return return_list
 
 
-    def exists(self, name=Nonei, custom_filter=None, custom_filter_vars=None):
+    def exists(self, name=None, custom_filter=None, custom_filter_vars=None):
         """
         Method to check if a single Dependency exists
 
