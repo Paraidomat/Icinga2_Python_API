@@ -135,11 +135,16 @@ class Services():
         else:
             ret = self.list(custom_filter=custom_filter,
                             custom_filter_vars=custom_filter_vars)
-
-        if ret.status_code == 200:
-            return True
-        else:
-            return False
+        try:
+            if ret.status_code == 200:
+                return True
+            else:
+                return False
+        except AttributeError:
+            if len(ret) > 0:
+                return True
+            else:
+                return False
 
     def objects(self, attrs=None, _filter=None, joins=None, process=True):
         """
